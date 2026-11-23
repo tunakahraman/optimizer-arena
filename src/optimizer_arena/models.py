@@ -17,3 +17,8 @@ def gradient(X, y, theta):
     n = X.shape[0]
     residual = predict(X, theta) - y
     return (2 / n) * (X.T @ residual)
+
+def hessian(X):
+    """Return the Hessian of the MSE loss (constant for linear regression)."""
+    n = X.shape[0]
+    return (2 / n) * (X.T @ X)

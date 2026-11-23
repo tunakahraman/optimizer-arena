@@ -15,3 +15,14 @@ def add_bias_column(x):
         x = x.reshape(-1, 1)
     ones = np.ones((x.shape[0], 1))
     return np.hstack((ones, x))
+
+def load_california_housing():
+    """Return raw feature matrix (no bias column) and target (units of $100k)."""
+    from sklearn.datasets import fetch_california_housing
+
+    data = fetch_california_housing()
+    return data.data, data.target
+
+def standardize(features):
+    """Return features scaled to mean 0 and standard deviation 1 per column."""
+    return (features - features.mean(axis=0)) / features.std(axis=0)
